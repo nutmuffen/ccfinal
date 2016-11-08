@@ -5,25 +5,30 @@ var pTime = 0;
 var display = ".";
 var ct = 0;
 
-var phone = new pScreen(900,300,250,380);
+var phone;
 
 var dialogue;
 var dNo = 13;
-
-var lineTrigger = 0;
+var lineTrigger = 1;
 var choice = 0;
 var clearSwitch = 0;
 var asking = 0;
 var canAsk;
+var inButton;
+var inNo;
 
 
 function setup() {
-  createCanvas(1280,720);
+  /*
+  createCanvas(1280,720);*/
+  createCanvas(windowWidth, windowHeight);
+  phone = new pScreen(0,0,windowWidth,windowHeight);
   dialogue = loadStrings("lines.txt");
  
 }
 
 function draw() {
+  //console.log(windowWidth);
   var mTime = int(millis());
   //console.log(str(dialogue[4]).length);
   var dialogueState = " You are now on line "+dNo+". ";
@@ -42,7 +47,7 @@ function draw() {
   
   
   
-  textSize(16);
+  textSize(36);
   
   
   
@@ -132,17 +137,45 @@ function draw() {
   else{
     canAsk = "Yes";
   }
-  text(mTime +", "+pTime, 200,200);
-  text("Can Answer: "+canAsk, 600,400);
+  
+  //BUTTONS
+  fill(0,255,0);
+  ellipse(100,400,100);
+  fill(255,0,0);
+  ellipse(300,400,100);
+  fill(255);
+  
+  var distance = dist(mouseX, mouseY, 100, 400);
+  var distanceNo = dist(mouseX, mouseY, 300,400);
+  
+  // if the distance is less than the circle's radius
+  if(distance < 100)
+  {
+    inButton = true;
+  } else {
+    inButton = false;
+  }
+  
+  if(distanceNo < 100){
+    inNo = true;
+  }
+  else{
+    inNo = false;
+  }
+  
+  // text(mTime +", "+pTime, 200,200);
+  text("Can Answer: "+canAsk, 50,windowHeight-50);
   //console.log(testMsg[ct]);
+  
+  
   
   
 }
 
 function keyTyped(){
-    if(key === 'r'){
-      lineTrigger = 1;
-    }
+    // if(key === 'r'){
+    //   lineTrigger = 1;
+    // }
     
     if(asking == 1){
       if(key === 'y'){
@@ -162,4 +195,23 @@ function keyTyped(){
     }
     
     
+}
+
+function mouseReleased(){
+  if(inButton == true)
+  {
+        choice = 1;
+        display = "!";
+        ct = 0;
+        asking = 0;
+        dNo+=1;
+  }
+  
+  if(inNo == true){
+    choice = 2;
+        display = "!";
+        ct = 0;
+        //clearSwitch = 1;
+        asking = 0;
+  }
 }
