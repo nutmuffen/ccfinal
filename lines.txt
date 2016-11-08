@@ -1,0 +1,26 @@
+You have pressed Yes.
+You have pressed No.
+Please make a selection.
+This is sentence two.
+This is sentence three.
+This is sentence four.
+This is sentence five.
+This is sentence six.
+This is sentence seven.
+This is sentence eight.
+This sentence triggers when you say Yes.
+This sentence triggers when you say No.
+//Questions
+Do you like the color red?
+I suggest an apple.
+I suggest a banana.
+Do you like fruit?
+I suggest an orange.
+I suggest a firetruck.
+Do you like citruses?
+I don't have any citruses on me do I look like a fruit stand to you bitch.
+Have fun dying of scurvy you unhealthy piece of shit.
+
+
+
+
